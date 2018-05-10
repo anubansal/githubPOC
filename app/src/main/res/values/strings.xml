@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GithubPOC</string>
+    <string name="enter_input">Enter username and repository</string>
+    <string name="edittext_hint">example: anubansal/githubPOC</string>
+    <string name="go">GO</string>
+    <string name="view_prs">View Pull Requests</string>
+</resources>
