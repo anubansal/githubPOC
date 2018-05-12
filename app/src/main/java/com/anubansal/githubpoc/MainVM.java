@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -59,13 +60,15 @@ public class MainVM extends AndroidViewModel {
                 if (!value.isEmpty()) {
                     adapter.setPullRequestModels(value);
                 } else {
-//                    TODO : show error case text
+                    adapter.setPullRequestModels(new ArrayList<PullRequestModel>());
+                    Toast.makeText(getApplication().getApplicationContext(), "No open PRs found", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(Throwable e) {
                 e.printStackTrace();
+                adapter.setPullRequestModels(new ArrayList<PullRequestModel>());
                 Toast.makeText(getApplication().getApplicationContext(), "Error occurred! Please check input!", Toast.LENGTH_SHORT).show();
             }
         };
