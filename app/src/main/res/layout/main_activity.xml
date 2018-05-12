@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.anubansal.githubpoc.MainVM" />
+
+        <variable
+            name="adapter"
+            type="com.anubansal.githubpoc.PRListAdapter" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="40dp">
+
+            <EditText
+                android:id="@+id/owner_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your comment"
+                android:imeOptions="actionDone"
+                android:text="@={viewModel.owner}"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/repo_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/owner_edittext"
+                android:layout_marginTop="10dp"
+                android:hint="Your comment"
+                android:imeOptions="actionDone"
+                android:text="@={viewModel.repo}"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <Button
+                android:id="@+id/loadRepos_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/repo_edittext"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:onClick="@{(view) -> viewModel.goClicked(adapter)}"
+                android:text="@string/view_prs" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

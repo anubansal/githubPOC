@@ -8,14 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PRListAdapter extends RecyclerView.Adapter<PRListAdapter.PRViewHolder> {
 
-    private List<PullRequestModel> pullRequestModels;
+    private List<PullRequestModel> pullRequestModels = new ArrayList<>();
 
-    public PRListAdapter(List<PullRequestModel> pullRequestModels) {
+    public void setPullRequestModels(List<PullRequestModel> pullRequestModels) {
         this.pullRequestModels = pullRequestModels;
+        notifyDataSetChanged();
     }
 
     @NonNull
